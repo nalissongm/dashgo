@@ -8,7 +8,7 @@ interface InputProps extends ChackraInputProps {
 export function Input({name, label, ...rest}: InputProps){
   return (
     <FormControl>
-      {!!label && <FormLabel htmlFor={name}>E-mail</FormLabel>}
+      {!!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
       <ChackraInput
         id={name} 
         name={name}
