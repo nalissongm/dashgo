@@ -8,6 +8,8 @@ export default function SingIn() {
       h="100vh"
       align="center"
       justify="center"
+      p={["6", "0"]}
+      minW="320px"
     >
       <Flex 
         as="form"
