@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { Input } from '../components/Form/Input';
 
-type SingInProps = {
+type SingInFormData = {
   email: string,
   password: string,
 }
@@ -21,7 +21,7 @@ export default function SingIn() {
   });
   const { errors } = formState;
 
-  const handleSingIn: SubmitHandler<SingInProps> = async (values, event) => {
+  const handleSingIn: SubmitHandler<SingInFormData> = async (values, event) => {
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     console.log(values);
