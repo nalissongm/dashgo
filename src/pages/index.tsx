@@ -1,19 +1,19 @@
-import { Flex,  Button, Stack,  } from '@chakra-ui/react';
+import { Flex, Button, Stack } from "@chakra-ui/react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Input } from '../components/Form/Input';
+import { Input } from "../components/Form/Input";
 
 type SingInFormData = {
-  email: string,
-  password: string,
-}
+  email: string;
+  password: string;
+};
 
 const signInFormSchema = yup.object().shape({
-  email: yup.string().required('E-mail obrigatório').email('E-mail inválido'),
-  password: yup.string().required('Senha obrigatória'),
-})
+  email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
+  password: yup.string().required("Senha obrigatória"),
+});
 
 export default function SingIn() {
   const { handleSubmit, register, formState } = useForm({
@@ -22,14 +22,12 @@ export default function SingIn() {
   const { errors } = formState;
 
   const handleSingIn: SubmitHandler<SingInFormData> = async (values, event) => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    console.log(values);
-  }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  };
 
   return (
-    <Flex 
-      w="100vw" 
+    <Flex
+      w="100vw"
       h="100vh"
       align="center"
       justify="center"
@@ -37,7 +35,7 @@ export default function SingIn() {
       minW="320px"
       onSubmit={handleSubmit(handleSingIn)}
     >
-      <Flex 
+      <Flex
         as="form"
         width="100%"
         maxWidth={360}
@@ -47,26 +45,26 @@ export default function SingIn() {
         flexDir="column"
       >
         <Stack spacing="4">
-          <Input 
-            name='email' 
-            type='email' 
+          <Input
+            name="email"
+            type="email"
             label="E-mail"
             error={errors.email}
-            {...register('email')}
+            {...register("email")}
           />
-          <Input 
-            name='password' 
-            type='password' 
-            label="Senha" 
+          <Input
+            name="password"
+            type="password"
+            label="Senha"
             error={errors.password}
-            {...register('password')}
+            {...register("password")}
           />
         </Stack>
 
-        <Button 
-          type="submit" 
-          mt="6" 
-          colorScheme="pink" 
+        <Button
+          type="submit"
+          mt="6"
+          colorScheme="pink"
           size="lg"
           isLoading={formState.isSubmitting}
         >
